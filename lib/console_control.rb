@@ -1,7 +1,7 @@
 require_relative "./data_getter"
 require_relative "./data_handler"
 
-class CliProject::ConsoleControl
+class ConsoleControl
 
     def initialize(name)
         @name = name
