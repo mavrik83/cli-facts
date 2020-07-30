@@ -20,8 +20,8 @@ class ConsoleControl
 
     def display_fact
         response = gets.chomp
-        fact = DataGetter.choose_category(response)
-        puts fact.valuegit 
+        fact = DataHandler.fact_parser(response)
+        puts fact
     end
 
 end
