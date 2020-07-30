@@ -21,7 +21,7 @@ class ConsoleControl
     def display_fact
         response = gets.chomp
         fact = DataHandler.fact_parser(response)
-        puts fact
+        puts fact 
     end
 
 end
