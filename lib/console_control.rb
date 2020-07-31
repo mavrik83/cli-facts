@@ -6,15 +6,14 @@ class ConsoleControl
     
 
     def run
-        puts "Welcome to Chuck Norris facts!\n\n"
+        puts "Welcome to Chuck Norris facts!"
+        puts "This app will generate a\nrandom Chuck Norris FACT\nby category"
         list = DataGetter.get_categories
         list.each do |cat|
             CategoryList.new(cat)
         end
         select_category
     end
-
-    
 
     def select_category
         puts "Please select from the following catagories:\n\n"
@@ -49,6 +48,9 @@ class ConsoleControl
         elsif response.to_i.between?(1, CategoryList.all.length)
             category = CategoryList.all[response.to_i - 1]
             fact_display(category.name)
+        elsif response.downcase == "exit" || response.downcase == "quit"
+            puts "\n\n"
+            exit!
         else
             puts "That isn't one of the categories!"
             fact_input
@@ -58,12 +60,16 @@ class ConsoleControl
     end
 
     def exit_or_rerun
-        puts "\n\nDo you want to select another category?\n"
+        puts "\n\nDo you want to select another category?\n\n"
         print "yes/no? :=> "
         response = gets.chomp
         if response.downcase == "yes" 
             select_category
         elsif response.downcase == "no"
+            puts "\n\n"
+            exit!
+        elsif response.downcase == "exit"
+            puts "\n\n"
             exit!
         else
             puts "Invalid response! Please enter 'yes' or 'no'!"
