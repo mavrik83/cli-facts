@@ -7,23 +7,36 @@ class ConsoleControl
 
     def run
         puts "Welcome to Chuck Norris facts!\n\n"
-        self.select_category
+        CategoryList.new
+        select_category
     end
+
+    
 
     def select_category
         puts "Please select from the following catagories:\n\n"
-        
-        puts DataHandler.category_lister
         puts "\n\n"
-    
-        self.display_fact
+        puts self.category_lister
+        display_fact
+    end
+
+    def self.category_lister
+        idx_categories = CategoryList.categories do |cat, idx|
+            "#{idx + 1}: #{cat}"
+        end
+        idx_categories
+    end
+
+    def self.fact_parser(category)
+        response = DataGetter.choose_category(category)
+        response["value"]
     end
 
     def display_fact
         print ":=> "
         response = gets.chomp
-        if DataHandler.category_pull.include?(response)
-            fact = DataHandler.fact_parser(response)
+        if @list.include?(response)
+            fact = self.fact_parser(response)
             puts "\n\n"
             puts fact 
         else
@@ -31,8 +44,6 @@ class ConsoleControl
         end
 
         self.exit_or_rerun
-        
-    
     end
 
     def exit_or_rerun

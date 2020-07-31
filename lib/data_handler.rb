@@ -2,30 +2,22 @@ require_relative "./data_getter"
 require_relative "./console_control"
 require "pry"
 
-class DataHandler
+class CategoryList
 
-    attr_accessor :categories
+    attr_accessor :categories, :list
+
+    @@categories = []
 
     def initialize
-        @categories = []
-    end
-
-    def self.fact_parser(category)
-        response = DataGetter.choose_category(category)
-        response["value"]
-    end
-
-    def self.category_pull
-        DataGetter.get_categories
-    end
-
-    def self.category_lister
-        @categories = self.category_pull
-        @categories = @categories.map.with_index do |cat, idx|
-            "#{idx + 1}: #{cat}"
+        list = DataGetter.get_categories
+        list.each do |cat|
+            @@categories << cat
         end
-        @categories
+        
     end
+
+
+    
 
 
     
