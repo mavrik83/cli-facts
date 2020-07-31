@@ -31,14 +31,24 @@ class ConsoleControl
         else
             puts "That isn't one of the categories!"
         end
+
+        exit_or_rerun
         
     end
 
-    # def exit_or_rerun
-    #     ""
-    #     response = gets.chomp
-    #     if respons 
-    # end
+    def exit_or_rerun
+        puts "\n\nDo you want to select another category?\n"
+        print "yes/no? :=> "
+        response = gets.chomp
+        if response.downcase == "yes" 
+            select_category
+        elsif response.downcase == "no"
+            exit!
+        else
+            puts "Invalid response! Please enter 'yes' or 'no'!"
+            exit_or_rerun
+        end
+    end
 
     
 
