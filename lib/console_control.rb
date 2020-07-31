@@ -1,9 +1,5 @@
-require_relative "./data_getter"
-require_relative "./data_handler"
 
 class ConsoleControl
-
-    
 
     def run
         puts "\nWelcome to Chuck Norris facts!"
@@ -35,8 +31,8 @@ class ConsoleControl
 
     def fact_display(category)
         fact = self.fact_parser(category)
-            puts "\n\n"
-            puts fact
+        puts "\n\n"
+        puts fact
     end
 
     def fact_input
