@@ -100,4 +100,5 @@ class ConsoleControl
         puts "Chuck Norris disapproves of your choice...\n\n"
         exit!
     end
+
 end
