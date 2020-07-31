@@ -48,29 +48,38 @@ class ConsoleControl
         response["value"]
     end
 
-    
+    # Displays the return value of #fact_parser
     def fact_display(category)
         puts "\n\n"
-        puts self.fact_parser(category)
+        puts fact_parser(category)
     end
 
+    # Get the user's selection and calls the appropriate method and then calls #exit_or_rerun.
     def fact_input
         print ":=> "
-        response = gets.chomp
-        if Category.all.detect {|x| x.name == response} 
+        response = gets.chomp # gets the user input and assigns it a variable.
+        # iterates over the collection of categories and checks to see if user
+        # input matches. If so, it runs #fact_display.
+        if Category.all.detect {|x| x.name == response}
             fact_display(response)
+        # checks if user input is an intenger between 1 and the length of the category array.
+        # if it is, sets 'category' variable to the element at that index - 1.
         elsif response.to_i.between?(1, Category.all.length)
             category = Category.all[response.to_i - 1]
             fact_display(category.name)
+        # if user input matches anything from the QUIT_INPUT constant, calls #exit_app.
         elsif QUIT_INPUT.include?(response.downcase)
             exit_app
+        # if no user input matches valid responses, displays message and restarts method.
         else
-            puts "That isn't one of the categories! Please enter\na number or the name of a category."
+            puts "That isn't one of the categories! Please enter\na number or name of a category."
             fact_input
         end
-        self.exit_or_rerun
+        exit_or_rerun
     end
 
+    # Prompts the user to either choose another category or not. Accepts any input from the
+    # constants AFFIRMATIVE_INPUT, NEGATIVE_INPUT, or QUIT_INPUT.
     def exit_or_rerun
         puts "\n\nDo you want to select another category?\n\n"
         print ":=> "
@@ -85,6 +94,7 @@ class ConsoleControl
         end
     end
 
+    # Clears the terminal, displays a message, and exits the application.
     def exit_app
         system("clear")
         puts "Chuck Norris disapproves of your choice...\n\n"
