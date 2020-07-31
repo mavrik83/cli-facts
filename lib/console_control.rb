@@ -56,7 +56,7 @@ class ConsoleControl
 
     # Get the user's selection and calls the appropriate method and then calls #exit_or_rerun.
     def fact_input
-        print ":=> "
+        print ">>: "
         response = gets.chomp # gets the user input and assigns it a variable.
         # iterates over the collection of categories and checks to see if user
         # input matches. If so, it runs #fact_display.
@@ -82,7 +82,7 @@ class ConsoleControl
     # constants AFFIRMATIVE_INPUT, NEGATIVE_INPUT, or QUIT_INPUT.
     def exit_or_rerun
         puts "\n\nDo you want to select another category?\n\n"
-        print ":=> "
+        print ">>: "
         response = gets.chomp
         if AFFIRMATIVE_INPUT.include?(response.downcase)
             select_category
