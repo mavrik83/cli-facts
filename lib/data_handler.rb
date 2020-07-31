@@ -1,5 +1,4 @@
-
-class CategoryList
+class Category
 
     attr_accessor :name
 

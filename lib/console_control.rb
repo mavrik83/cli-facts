@@ -1,4 +1,5 @@
 class ConsoleControl
+
     # declares and freezes acceptable input responses for menu navigation
     AFFIRMATIVE_INPUT = ["yes", "y"].freeze
     NEGATIVE_INPUT = ["no", "n"].freeze
@@ -18,12 +19,13 @@ class ConsoleControl
     # Calls the API for an array of categories and assigns it to the variable. Iterates over
     # the array and instantiates a new object for each element.
     def list_builder
-        list = DataGetter.get_categories
+        list = API.get_categories
         list.each do |cat|
-            CategoryList.new(cat)
+            Category.new(cat)
         end
     end
 
+    # 
     def select_category
         puts "Please select from the following catagories:\n\n"
         category_lister
@@ -32,14 +34,14 @@ class ConsoleControl
     end
 
     def category_lister
-        CategoryList.all.each_with_index do |cat, idx|
+        Category.all.each_with_index do |cat, idx|
             puts "#{idx + 1}: #{cat.name}"
         end
     end
 
     # this method does something
     def fact_parser(category)
-        response = DataGetter.choose_category(category)
+        response = API.choose_category(category)
         response["value"]
     end
 
@@ -52,10 +54,10 @@ class ConsoleControl
     def fact_input
         print ":=> "
         response = gets.chomp
-        if CategoryList.all.detect {|x| x.name == response} 
+        if Category.all.detect {|x| x.name == response} 
             fact_display(response)
-        elsif response.to_i.between?(1, CategoryList.all.length)
-            category = CategoryList.all[response.to_i - 1]
+        elsif response.to_i.between?(1, Category.all.length)
+            category = Category.all[response.to_i - 1]
             fact_display(category.name)
         elsif QUIT_INPUT.include?(response.downcase)
             exit_app
