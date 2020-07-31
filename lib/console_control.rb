@@ -7,7 +7,10 @@ class ConsoleControl
 
     def run
         puts "Welcome to Chuck Norris facts!\n\n"
-        CategoryList.new
+        list = DataGetter.get_categories
+        list.each do |cat|
+            CategoryList.new(cat)
+        end
         select_category
     end
 
@@ -16,31 +19,39 @@ class ConsoleControl
     def select_category
         puts "Please select from the following catagories:\n\n"
         puts "\n\n"
-        puts self.category_lister
-        display_fact
+        category_lister
+        puts "\n\n"
+        fact_input
     end
 
-    def self.category_lister
-        idx_categories = CategoryList.categories do |cat, idx|
-            "#{idx + 1}: #{cat}"
+    def category_lister
+        CategoryList.all.each_with_index do |cat, idx|
+            puts "#{idx + 1}: #{cat.name}"
         end
-        idx_categories
     end
 
-    def self.fact_parser(category)
+    def fact_parser(category)
         response = DataGetter.choose_category(category)
         response["value"]
     end
 
-    def display_fact
+    def fact_display(category)
+        fact = self.fact_parser(category)
+            puts "\n\n"
+            puts fact
+    end
+
+    def fact_input
         print ":=> "
         response = gets.chomp
-        if @list.include?(response)
-            fact = self.fact_parser(response)
-            puts "\n\n"
-            puts fact 
+        if CategoryList.all.detect {|x| x.name == response} 
+            fact_display(response)
+        elsif response.to_i.between?(1, CategoryList.all.length)
+            category = CategoryList.all[response.to_i - 1]
+            fact_display(category.name)
         else
             puts "That isn't one of the categories!"
+            fact_input
         end
 
         self.exit_or_rerun
@@ -59,9 +70,4 @@ class ConsoleControl
             exit_or_rerun
         end
     end
-
-    
-
-    
-
 end

@@ -4,25 +4,18 @@ require "pry"
 
 class CategoryList
 
-    attr_accessor :categories, :list
+    attr_accessor :name
 
     @@categories = []
 
-    def initialize
-        list = DataGetter.get_categories
-        list.each do |cat|
-            @@categories << cat
-        end
-        
+    def initialize(name)
+        @name = name
+        @@categories << self
     end
 
-
-    
-
-
-    
-
-    
-
+    def self.all
+        @@categories
+    end
 
 end
+
