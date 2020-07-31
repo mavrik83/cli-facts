@@ -6,8 +6,8 @@ class ConsoleControl
     
 
     def run
-        puts "Welcome to Chuck Norris facts!"
-        puts "This app will generate a\nrandom Chuck Norris FACT\nby category"
+        puts "\nWelcome to Chuck Norris facts!"
+        puts "This app will generate a random\nChuck Norris FACT by category\n\n"
         list = DataGetter.get_categories
         list.each do |cat|
             CategoryList.new(cat)
@@ -17,7 +17,6 @@ class ConsoleControl
 
     def select_category
         puts "Please select from the following catagories:\n\n"
-        puts "\n\n"
         category_lister
         puts "\n\n"
         fact_input
@@ -49,13 +48,11 @@ class ConsoleControl
             category = CategoryList.all[response.to_i - 1]
             fact_display(category.name)
         elsif response.downcase == "exit" || response.downcase == "quit"
-            puts "\n\n"
-            exit!
+            exit_app
         else
             puts "That isn't one of the categories!"
             fact_input
         end
-
         self.exit_or_rerun
     end
 
@@ -65,15 +62,17 @@ class ConsoleControl
         response = gets.chomp
         if response.downcase == "yes" 
             select_category
-        elsif response.downcase == "no"
-            puts "\n\n"
-            exit!
-        elsif response.downcase == "exit"
-            puts "\n\n"
-            exit!
+        elsif response.downcase == "no" || response.downcase == "exit" || response.downcase == "quit"
+            exit_app
         else
-            puts "Invalid response! Please enter 'yes' or 'no'!"
+            puts "Invalid response! Please enter 'yes', 'no', or 'exit' to quit"
             exit_or_rerun
         end
+    end
+
+    def exit_app
+        system("clear")
+        puts "Chuck Norris disapproves of your choice...\n\n"
+        exit!
     end
 end
