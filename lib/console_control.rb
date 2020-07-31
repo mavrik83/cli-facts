@@ -16,8 +16,8 @@ class ConsoleControl
         select_category
     end
 
-    # Calls the API for an array of categories and assigns it to the variable. Iterates over
-    # the array and instantiates a new object for each element.
+    # Calls the API for an array of categories and assigns it to the variable. Iterates
+    # over the array and instantiates a new object for each element.
     def list_builder
         list = API.get_categories
         list.each do |cat|
@@ -25,7 +25,7 @@ class ConsoleControl
         end
     end
 
-    # 
+    # Presents the list of categories to the use then calls #fact_input to get user response.
     def select_category
         puts "Please select from the following catagories:\n\n"
         category_lister
@@ -33,22 +33,25 @@ class ConsoleControl
         fact_input
     end
 
+    # Iterates over the collection of categories in order to output a numbered list of
+    # all categories.
     def category_lister
         Category.all.each_with_index do |cat, idx|
             puts "#{idx + 1}: #{cat.name}"
         end
     end
 
-    # this method does something
+    # Passes the parameter, which is the users selection, and calls the API
+    # to return the JSON of the joke. Returns only the 'value' of the JSON object.
     def fact_parser(category)
         response = API.choose_category(category)
         response["value"]
     end
 
+    
     def fact_display(category)
-        fact = self.fact_parser(category)
         puts "\n\n"
-        puts fact
+        puts self.fact_parser(category)
     end
 
     def fact_input
