@@ -70,7 +70,7 @@ class ConsoleControl
 
     def exit_or_rerun
         puts "\n\nDo you want to select another category?\n\n"
-        print "yes/no? :=> "
+        print ":=> "
         response = gets.chomp
         if AFFIRMATIVE_INPUT.include?(response.downcase)
             select_category
