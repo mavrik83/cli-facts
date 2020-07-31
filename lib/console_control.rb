@@ -14,7 +14,9 @@ class ConsoleControl
 
     def select_category
         puts "Please select from the following catagories:"
-        puts DataGetter.get_categories
+        
+        puts DataHandler.category_lister
+    
         self.display_fact
     end
 
@@ -23,5 +25,9 @@ class ConsoleControl
         fact = DataHandler.fact_parser(response)
         puts fact 
     end
+
+    
+
+    
 
 end

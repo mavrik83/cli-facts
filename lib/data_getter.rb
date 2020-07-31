@@ -8,7 +8,7 @@ class DataGetter
     
 
     def self.get_categories
-        response = HTTParty.get("https://api.chucknorris.io/jokes/categories")
+       HTTParty.get("https://api.chucknorris.io/jokes/categories")
     end
 
     def self.choose_category(category)
