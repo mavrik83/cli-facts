@@ -16,10 +16,11 @@ def welcome_message
     puts "█████   ███████ ██         ██    ███████"                                                  
     puts "██      ██   ██ ██         ██         ██"
     puts "██      ██   ██  ██████    ██    ███████"
-    sleep(4)
 end
 
 
 welcome_message
+
+sleep(3)
 
 ConsoleControl.new.run
