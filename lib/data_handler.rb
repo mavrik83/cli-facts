@@ -12,8 +12,12 @@ class DataHandler
         response["value"]
     end
 
+    def self.category_pull
+        DataGetter.get_categories
+    end
+
     def self.category_lister
-        @categories = DataGetter.get_categories
+        @categories = self.category_pull
         @categories = @categories.map.with_index do |cat, idx|
             "#{idx + 1}: #{cat}"
         end

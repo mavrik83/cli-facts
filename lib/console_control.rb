@@ -24,12 +24,14 @@ class ConsoleControl
     def display_fact
         print ":=> "
         response = gets.chomp
-        if response
-
+        if DataHandler.category_pull.include?(response)
+            fact = DataHandler.fact_parser(response)
+            puts "\n\n"
+            puts fact 
+        else
+            puts "That isn't one of the categories!"
         end
-        fact = DataHandler.fact_parser(response)
-        puts "\n\n"
-        puts fact 
+        
     end
 
     # def exit_or_rerun
