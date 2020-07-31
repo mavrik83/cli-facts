@@ -3,9 +3,7 @@ require_relative "./data_handler"
 
 class ConsoleControl
 
-    # def initialize(name)
-    #     @name = name
-    # end
+    
 
     def run
         puts "Welcome to Chuck Norris facts!\n\n"
@@ -32,8 +30,9 @@ class ConsoleControl
             puts "That isn't one of the categories!"
         end
 
-        exit_or_rerun
+        self.exit_or_rerun
         
+    
     end
 
     def exit_or_rerun

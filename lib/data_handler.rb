@@ -6,6 +6,9 @@ class DataHandler
 
     attr_accessor :categories
 
+    def initialize
+        @categories = []
+    end
 
     def self.fact_parser(category)
         response = DataGetter.choose_category(category)
