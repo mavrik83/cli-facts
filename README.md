@@ -9,7 +9,9 @@ Here is my project. Have fun!
 ## Code Samples
 
 
-    # Calls the API for an array of categories and assigns it to the variable. Iterates over the array and instantiates a new object for each element.
+    # Calls the API for an array of categories and
+    # assigns it to the variable. Iterates over the 
+    # array and instantiates a new object for each element.
     def list_builder
         list = API.get_categories
         list.each do |cat|
