@@ -50,7 +50,7 @@ class ConsoleControl
 
     # Displays the return value of #fact_parser
     def fact_display(category)
-        puts "\n\n"
+        puts "\n"
         puts fact_parser(category)
     end
 
@@ -87,7 +87,7 @@ class ConsoleControl
     # Prompts the user to either choose another category or not. Accepts any input from the
     # constants AFFIRMATIVE_INPUT, NEGATIVE_INPUT, or QUIT_INPUT.
     def exit_or_rerun
-        puts "\n\nDo you want to select another category?\n\n"
+        puts "\nDo you want to select another category? (yes/no/exit)\n\n"
         response = user_input_capture
         if AFFIRMATIVE_INPUT.include?(response.downcase)
             select_category
