@@ -28,7 +28,7 @@ Here is my project. Have fun!
 
 ## Features
 
-Nothing fancy here, but there a few features i'm proud of:
+Nothing fancy here, but there are few features I'm proud of:
 
 1. You can exit from anywhere in the app by typing any of the following: 'exit', 'quit', 'x', or 'q'. They are not case sensitive.
 2. Similarly, when selcting a category, you can type the name of the category or the corresponding number.
