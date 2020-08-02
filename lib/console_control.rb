@@ -54,10 +54,15 @@ class ConsoleControl
         puts fact_parser(category)
     end
 
+    def user_input_capture
+        print ">>: "
+        response = gets.chomp
+        response
+    end
+
     # Get the user's selection and calls the appropriate method and then calls #exit_or_rerun.
     def fact_input
-        print ">>: "
-        response = gets.chomp # gets the user input and assigns it a variable.
+        response = user_input_capture # gets the user input and assigns it a variable.
         # iterates over the collection of categories and checks to see if user
         # input matches. If so, it runs #fact_display.
         if Category.all.detect {|x| x.name == response}
@@ -82,8 +87,7 @@ class ConsoleControl
     # constants AFFIRMATIVE_INPUT, NEGATIVE_INPUT, or QUIT_INPUT.
     def exit_or_rerun
         puts "\n\nDo you want to select another category?\n\n"
-        print ">>: "
-        response = gets.chomp
+        response = user_input_capture
         if AFFIRMATIVE_INPUT.include?(response.downcase)
             select_category
         elsif NEGATIVE_INPUT.include?(response.downcase) || QUIT_INPUT.include?(response.downcase)
