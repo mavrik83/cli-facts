@@ -21,6 +21,6 @@ end
 
 welcome_message
 
-sleep(3)
+sleep(1.5)
 
 ConsoleControl.new.run

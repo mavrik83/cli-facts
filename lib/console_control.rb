@@ -12,20 +12,20 @@ class ConsoleControl
         system("clear")
         puts "\nWelcome to Chuck Norris facts!"
         puts "This app will generate a random\nChuck Norris FACT by category\n\n"
-        list_builder
+        category_list_builder
         select_category
     end
 
     # Calls the API for an array of categories and assigns it to the variable. Iterates
     # over the array and instantiates a new object for each element.
-    def list_builder
-        list = API.get_categories
-        list.each do |cat|
+    def category_list_builder
+        categories = API.get_categories
+        categories.each do |cat|
             Category.new(cat)
         end
     end
 
-    # Presents the list of categories to the use then calls #fact_input to get user response.
+    # Presents the list of categories to the user then calls #fact_input to get user response.
     def select_category
         puts "Please select from the following catagories:\n\n"
         category_lister
@@ -41,7 +41,7 @@ class ConsoleControl
         end
     end
 
-    # Passes the parameter, which is the users selection, and calls the API
+    # Passes the parameter, which is the user's selection, and calls the API
     # to return the JSON of the joke. Returns only the 'value' of the JSON object.
     def fact_parser(category)
         response = API.choose_category(category)
@@ -96,7 +96,6 @@ class ConsoleControl
 
     # Clears the terminal, displays a message, and exits the application.
     def exit_app
-        system("clear")
         puts "Chuck Norris disapproves of your choice...\n\n"
         exit!
     end
