@@ -54,6 +54,7 @@ class ConsoleControl
         puts fact_parser(category)
     end
 
+    # Provides a prompt and then captures and returns the input.
     def user_input_capture
         print ">>: "
         response = gets.chomp
