@@ -10,6 +10,26 @@ class ConsoleControl
     # to #select_category
     def run
         system("clear")
+
+        puts " ██████ ██   ██ ██    ██  ██████ ██   ██     ███    ██  ██████  ██████  ██████  ██ ███████"
+        puts "██      ██   ██ ██    ██ ██      ██  ██      ████   ██ ██    ██ ██   ██ ██   ██ ██ ██     "
+        puts "██      ███████ ██    ██ ██      █████       ██ ██  ██ ██    ██ ██████  ██████  ██ ███████"
+        puts "██      ██   ██ ██    ██ ██      ██  ██      ██  ██ ██ ██    ██ ██   ██ ██   ██ ██      ██"
+        puts " ██████ ██   ██  ██████   ██████ ██   ██     ██   ████  ██████  ██   ██ ██   ██ ██ ███████"
+        puts "\n\n"
+        puts "███████  █████   ██████ ████████ ███████"
+        puts "██      ██   ██ ██         ██    ██     "
+        puts "█████   ███████ ██         ██    ███████"                                                  
+        puts "██      ██   ██ ██         ██         ██"
+        puts "██      ██   ██  ██████    ██    ███████"
+
+        sleep(1.5)
+
+        run_app
+    end
+    
+    def run_app
+        system("clear")
         puts "\nWelcome to Chuck Norris facts!"
         puts "This app will generate a random\nChuck Norris FACT by category\n\n"
         category_list_builder
@@ -97,6 +117,7 @@ class ConsoleControl
             puts "Invalid response! Please enter 'yes', 'no', or 'exit' to quit"
             exit_or_rerun
         end
+    
     end
 
     # Clears the terminal, displays a message, and exits the application.

@@ -22,9 +22,9 @@ Here is my project. Have fun!
 ## Installation
 
 1. Open your terminal. 
-2. Install the 'HTTParty' gem: `gem install httparty`
-3. Go to the enclosing project folder: `/yourDirectoryPath/cli-facts`
-4. Run `ruby bin/run`
+2. Go to the enclosing project folder: `/yourDirectoryPath/cli-facts`
+3. Run `bundle install`
+4. Run `bin/run`
 
 ## Features
 
